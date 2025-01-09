@@ -1,23 +1,79 @@
-import Hospital from "../../assets/hospital.svg";
-import HealthCare from '../../assets/healthcare.svg';
-function Hero() {
-  return (
-    <>
-      <section className="w-full px-5">
-        <div className="relative w-full bg-primary2 rounded-2xl flex flex-col items-center justify-start h-[40vh] md:h-[82vh]">
-          <div className="absolute bottom-10 md:bottom-20 left-10 md:left-20 w-72 font-bold text-lg hidden md:block">BOOK THE INSTITUTIONS ONLINE FOR A HASSLE-FREE EXPERIENCE</div>
-          {/* HealthCare Text */}
-          <div className="absolute">
-            <img src={HealthCare} alt="healthcaretext" className="py-10 px-10"/>
-          </div>
-            {/* Hospital Image */}
-          <div className="absolute bottom-0">
-            <img src={Hospital} alt="hospital"/>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+import HealthCare from '../../assets/healthcare.png';
+import emergency from "../../assets/emergency.png"
+import laboratory from "../../assets/laboratory.png"
+import React, { useState, useEffect } from "react";
 
-export default Hero;
+const ImageCarousel = () => {
+  const images = [HealthCare, emergency, laboratory];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  return (
+    <div className="relative w-full max-w-7xl mx-auto overflow-hidden rounded-3xl">
+      <div
+        className="flex transition-transform duration-700"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+        }}
+      >
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Slide ${index + 1}`}
+            className="w-full h-[38rem] object-cover flex-shrink-0 rounded-3xl"
+          />
+        ))}
+      </div>
+
+      <button
+        onClick={goToPrevious}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-3 z-10 hover:bg-gray-700"
+      >
+        &#10094;
+      </button>
+
+      <button
+        onClick={goToNext}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-3 z-10 hover:bg-gray-700"
+      >
+        &#10095;
+      </button>
+
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full ${
+              currentIndex === index ? "bg-gray-800" : "bg-gray-400"
+            }`}
+          ></button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ImageCarousel;
