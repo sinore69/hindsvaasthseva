@@ -5,7 +5,7 @@ function Layout() {
   return(
     <>
     <TopBar/>
-    <TopBarSmall/>
+    {/* <TopBarSmall/> */}
     <Outlet/>
     </>
   )

@@ -42,7 +42,7 @@ const ImageCarousel = () => {
             key={index}
             src={image}
             alt={`Slide ${index + 1}`}
-            className="w-full h-[38rem] object-cover flex-shrink-0 rounded-3xl"
+            className="w-full h-[38rem] object-contain flex-shrink-0 rounded-3xl"
           />
         ))}
       </div>

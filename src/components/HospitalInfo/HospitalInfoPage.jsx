@@ -33,12 +33,12 @@ function HospitalInfo() {
 
   return (
     <div className="h-full w-full">
-    <section className="w-[100%] h-[60%]">
+    <section className="w-[100%] h-[70%]">
       {/* Hospital Image */}
-      <div className="w-full h-full sm:pb-10">
-        <img src={HospitalsImg} alt="Hospital Image" className="h-[110%]" />
+      <div className="w-full h-full sm:pb-10 bg-blue-200 ">
+        <img src={HospitalsImg} alt="Hospital Image" className="h-96" />
       </div>
-
+      
       {/* Navigation row for Overview, Doctors, and Location */}
       <div className="flex flex-row justify-start items-center gap-x-5 sm:pt-5 font-bold shadow-md p-3 w-96">
         {["Overview", "Amenities","Doctors", "Location"].map((tab) => (
