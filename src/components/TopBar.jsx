@@ -6,10 +6,10 @@ import { FaSearch, FaUser } from "react-icons/fa";
 
 export default function TopBar() {
   return (
-    <nav className="md:flex w-full text-sm font-bold justify-center top-5 z-20 fixed px-8">
+    <nav className="md:flex w-full text-sm font-bold justify-center top-5 fixed px-6 md:px-8">
       <div className="max-w-screen-lg w-full flex flex-row justify-between items-center px-2 md:px-6 py-4 bg-secondary rounded-lg shadow-lg">
         {/* Logo */}
-        <div className="md:px-4">
+        <div className="">
           <Link to="/">
             <img src={Logo} alt="logo" className="h-full" />
           </Link>

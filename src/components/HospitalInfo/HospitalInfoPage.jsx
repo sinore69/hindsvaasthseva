@@ -35,7 +35,7 @@ function HospitalInfo() {
     <div className="h-full w-full">
     <section className="w-[100%] h-[70%]">
       {/* Hospital Image */}
-      <div className="w-full h-full sm:pb-10 bg-blue-200 ">
+      <div className="w-full h-full sm:pb-10">
         <img src={HospitalsImg} alt="Hospital Image" className="h-96" />
       </div>
       
